@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { Component } from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css'
+
+class App extends Component {
+  state = {
+    inputMain: '',
+  }
+
+  changeInput = event => {
+    this.setState({
+      inputMain: event.target.value,
+    })
+  }
+
+  render() {
+    const {inputMain} = this.state
+    const splitAr = inputMain.split(' ').length
+    return (
+      <div className='center'>
+        <h1> Responsive Paragraph Word {"\n"}
+           Counter </h1>
+        <p> </p>
+        <textarea onChange={this.changeInput} rows={5} cols={20} />
+        <p> </p>
+        <p> Word Count : {splitAr - 1}</p>
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
